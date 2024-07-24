@@ -6,7 +6,7 @@ import spotipy.util as util
 from dotenv import load_dotenv
 load_dotenv()
 import pandas as pd
-
+import matplotlib.pyplot as plt
 import os
 
 client_id = os.environ.get("CLIENT_ID")
@@ -24,6 +24,17 @@ tracks = result["tracks"][0:10]
 #print(tracks)
 sub_tracks = [(d["name"],d["popularity"],d["duration_ms"]) for d in tracks]
 print(sub_tracks)
+columns = ["Track", "Popularity", "Duration"]
 
-df = pd.DataFrame(sub_tracks)
-print(df)
+df = pd.DataFrame(sub_tracks,columns=columns)
+
+print(df.head(3))
+
+x_vals = df.Popularity
+y_vals = df.Duration
+
+plt.scatter(x_vals,y_vals)
+plt.show()
+plt.savefig("Scatter.jpg",dpi = 300)
+corr = df.corr()
+print(corr)
