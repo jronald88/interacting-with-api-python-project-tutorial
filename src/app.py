@@ -38,3 +38,5 @@ plt.show()
 plt.savefig("Scatter.jpg",dpi = 300)
 corr = df.corr()
 print(corr)
+
+"""create object for connection and another for analysing data"""
