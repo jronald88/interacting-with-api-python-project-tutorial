@@ -27,16 +27,21 @@ print(sub_tracks)
 columns = ["Track", "Popularity", "Duration"]
 
 df = pd.DataFrame(sub_tracks,columns=columns)
-
-print(df.head(3))
+df_sorted = df.sort_values(by="Popularity")
+print(df_sorted.head(3))
 
 x_vals = df.Popularity
 y_vals = df.Duration
 
 plt.scatter(x_vals,y_vals)
+plt.xlabel("Popularity")
+plt.ylabel("Duration (ms)")
 plt.show()
 plt.savefig("Scatter.jpg",dpi = 300)
 corr = df.corr()
 print(corr)
+print("Given the distribution of the scatter plot at the PMCC value (0.35), the conclusion is that there is very weak positive correlation between song duration and popularity")
+
+
 
 """create object for connection and another for analysing data"""
